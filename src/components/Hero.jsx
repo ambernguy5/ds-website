@@ -1,5 +1,5 @@
 import { useState } from 'react'
-
+import headshot from '../ds-headshot.jpg'
 export default function Hero() {
   const [hover, setHover] = useState(false)
 
@@ -7,11 +7,7 @@ export default function Hero() {
     <section style={s.section}>
       {/* Left: headshot */}
       <div style={s.photoPane}>
-        <div style={s.photoInner}>
-          {/* Replace this div with: <img src={headshot} alt="Dillon Shokar" style={s.photo} /> */}
-          <span style={s.photoLabel}>[ Headshot ]</span>
-        </div>
-        <div style={s.photoOverlay} />
+         <img src={headshot} alt="Dillon Shokar" style={s.photo} />
       </div>
 
       {/* Right: text */}
@@ -22,7 +18,7 @@ export default function Hero() {
           Leading consultant in integrated evidence generation for the biopharmaceutical industry.
         </p>
         <p style={s.body}>
-          Partner at Princeton Biopartners and founder of ThesisRx — thought leadership at the frontier of precision medicine, longevity science, and direct-to-patient models.
+          Co-Founder & CEO at Princeton Biopartners. Thought leadership and specialization in biopharmaceutical evidence generation strategy, including real-world evidence, late-phase clinical development, and health economics and outcomes research.
         </p>
         <div style={s.btns}>
           <span

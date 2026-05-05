@@ -3,7 +3,6 @@ const COLS = [
     title: 'Navigate',
     links: [
       { label: 'About', href: '#about' },
-      { label: 'ThesisRx Research', href: '#research' },
       { label: 'Expertise', href: '#pillars' },
       { label: 'Contact', href: '#contact' },
     ],
@@ -21,7 +20,7 @@ const COLS = [
     links: [
       { label: 'dshokar@princetonbp.com', href: 'mailto:dshokar@princetonbp.com' },
       { label: 'Princeton Biopartners ↗', href: 'https://www.princetonbiopartners.com' },
-      { label: 'LinkedIn', href: '#' },
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/dillon-shokar/' },
     ],
   },
 ]
@@ -32,7 +31,6 @@ export default function Footer() {
       <div style={s.top}>
         <div>
           <p style={s.brand}>Dillon Shokar</p>
-          <p style={s.subBrand}>ThesisRx</p>
           <p style={s.tagline}>
             Critical analysis at the frontier of biopharmaceutical strategy and healthcare investment.
           </p>
