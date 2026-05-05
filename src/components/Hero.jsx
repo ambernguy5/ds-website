@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import headshot from '../ds-headshot.jpg'
+import headshot from '../assets/ds-headshot.jpg'
 export default function Hero() {
   const [hover, setHover] = useState(false)
 
