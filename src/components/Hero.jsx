@@ -7,7 +7,9 @@ export default function Hero() {
     <section style={s.section}>
       {/* Left: headshot */}
       <div style={s.photoPane}>
-         <img src={headshot} alt="Dillon Shokar" style={s.photo} />
+        <div style={s.photoFrame}>
+          <img src={headshot} alt="Dillon Shokar" style={s.photo} />
+        </div>
       </div>
 
       {/* Right: text */}
@@ -18,7 +20,7 @@ export default function Hero() {
           Leading consultant in integrated evidence generation for the biopharmaceutical industry.
         </p>
         <p style={s.body}>
-          Co-Founder & CEO at Princeton Biopartners. Thought leadership and specialization in biopharmaceutical evidence generation strategy, including real-world evidence, late-phase clinical development, and health economics and outcomes research.
+          Co-Founder & CEO of Princeton Biopartners. Thought leadership and specialization in biopharmaceutical evidence generation strategy, including real-world evidence, late-phase clinical development, and health economics and outcomes research.
         </p>
         <div style={s.btns}>
           <span
@@ -27,7 +29,7 @@ export default function Hero() {
             onMouseLeave={() => setHover(false)}
             onClick={() => document.getElementById('research')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            Read ThesisRx
+            Read Research
           </span>
           <span
             style={s.btnGhost}
@@ -46,7 +48,16 @@ const s = {
     display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: '100vh', paddingTop: 0,
   },
   photoPane: {
-    background: 'var(--green-mid)', position: 'relative', overflow: 'hidden', minHeight: 600,
+    background: 'var(--green-mid)',
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    minHeight: 600,
+  },
+  photoFrame: {
+    width: '60%', aspectRatio: '3 / 4',
+    border: '3px solid var(--orange)',
+    outline: '1px solid rgba(247,244,239,0.15)',
+    outlineOffset: 8,
+    overflow: 'hidden',
   },
   photoInner: {
     position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)',
@@ -55,7 +66,7 @@ const s = {
     clipPath: 'ellipse(50% 100% at 50% 100%)',
     display: 'flex', alignItems: 'flex-end', justifyContent: 'center', paddingBottom: 24,
   },
-  photo: { width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' },
+  photo: { width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' },
   photoLabel: {
     fontSize: 10, color: 'rgba(247,244,239,0.2)', letterSpacing: '0.1em', textTransform: 'uppercase',
   },

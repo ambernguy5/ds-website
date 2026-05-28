@@ -2,7 +2,7 @@
 const STATS = [
   { num: '12+',  label: 'Years in biopharmaceuticals' },
   { num: '40+',  label: 'Organisations advised'       },
-  { num: '3',    label: 'ThesisRx research pillars'   },
+  { num: '3',    label: 'Research pillars'              },
 ]
 // ─────────────────────────────────────────────────────────────────────────────
 

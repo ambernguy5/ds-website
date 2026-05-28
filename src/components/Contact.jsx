@@ -22,7 +22,7 @@ export default function Contact() {
           <p style={s.body}>
             Whether you're looking for a strategic advisor in integrated evidence generation,
             a thought partner on a market access challenge, or want to discuss
-            the ThesisRx research — Dillon's team responds within 48 hours.
+            the research — Dillon's team responds within 48 hours.
           </p>
           <a href="mailto:dshokar@princetonbp.com" style={s.emailLink}>
             dshokar@princetonbp.com

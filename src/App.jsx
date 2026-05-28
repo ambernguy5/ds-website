@@ -6,7 +6,6 @@ import Bio from './components/Bio'
 import Stats from './components/Stats'
 import Research from './components/Research'
 import Pillars from './components/Pillars'
-import Contact from './components/Contact'
 import Footer from './components/Footer'
 
 export default function App() {
@@ -20,7 +19,6 @@ export default function App() {
         <Stats />
         <Research />
         <Pillars />
-        <Contact />
       </main>
       <Footer />
     </>

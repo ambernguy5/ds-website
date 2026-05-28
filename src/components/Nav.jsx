@@ -23,10 +23,11 @@ export default function Nav() {
       }}>
         <div style={s.brand}>
           <span style={s.logo}>Dillon Shokar</span>
-          <span style={s.subBrand}>ThesisRx</span>
         </div>
+
+        {/* Desktop links */}
         <ul style={s.links} className="nav-desktop">
-          {[['about','About'],['research','Research'],['pillars','Expertise'],['contact','Contact']].map(([id,label]) => (
+          {[['about','About'],['research','Research'],['pillars','Expertise']].map(([id,label]) => (
             <li key={id} style={{ listStyle:'none' }}>
               <span style={s.link} onClick={() => scrollTo(id)}>{label}</span>
             </li>
@@ -35,21 +36,45 @@ export default function Nav() {
             <a href="https://www.princetonbiopartners.com" target="_blank" rel="noopener noreferrer" style={s.link}>Princeton Biopartners ↗</a>
           </li>
         </ul>
-        <a href="mailto:dshokar@princetonbp.com" style={s.cta}>Get in Touch</a>
+
+        <a href="mailto:dshokar@princetonbp.com" style={s.cta} className="nav-desktop">Get in Touch</a>
+
+        {/* Hamburger button — mobile only */}
+        <button
+          className="nav-hamburger"
+          onClick={() => setMenuOpen(o => !o)}
+          style={s.hamburger}
+          aria-label="Toggle menu"
+        >
+          <span style={{ ...s.bar, transform: menuOpen ? 'rotate(45deg) translate(5px, 5px)' : 'none' }} />
+          <span style={{ ...s.bar, opacity: menuOpen ? 0 : 1 }} />
+          <span style={{ ...s.bar, transform: menuOpen ? 'rotate(-45deg) translate(5px, -5px)' : 'none' }} />
+        </button>
       </nav>
 
-      {menuOpen && (
-        <div style={s.mobileMenu}>
-          <button onClick={() => setMenuOpen(false)} style={{ ...s.cta, marginBottom: 32 }}>Close</button>
-          {[['about','About'],['research','Research'],['pillars','Expertise'],['contact','Contact']].map(([id,label]) => (
-            <span key={id} style={s.mobileLink} onClick={() => scrollTo(id)}>{label}</span>
-          ))}
-        </div>
-      )}
+      {/* Mobile dropdown */}
+      <div className="nav-mobile-dropdown" style={{
+        ...s.dropdown,
+        maxHeight: menuOpen ? 400 : 0,
+        opacity: menuOpen ? 1 : 0,
+        pointerEvents: menuOpen ? 'auto' : 'none',
+      }}>
+        {[['about','About'],['research','Research'],['pillars','Expertise']].map(([id,label]) => (
+          <span key={id} style={s.dropdownLink} onClick={() => scrollTo(id)}>{label}</span>
+        ))}
+        <a href="https://www.princetonbiopartners.com" target="_blank" rel="noopener noreferrer" style={s.dropdownLink}>
+          Princeton Biopartners ↗
+        </a>
+        <a href="mailto:dshokar@princetonbp.com" style={{ ...s.dropdownLink, color: 'var(--orange)' }}>
+          Get in Touch
+        </a>
+      </div>
 
       <style>{`
+        .nav-hamburger { display: none; }
         @media (max-width: 768px) {
           .nav-desktop { display: none !important; }
+          .nav-hamburger { display: flex !important; }
         }
       `}</style>
     </>
@@ -70,10 +95,6 @@ const s = {
     fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 400,
     color: 'var(--cream)', letterSpacing: '0.02em',
   },
-  subBrand: {
-    fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase',
-    color: 'var(--orange)', fontWeight: 500,
-  },
   links: {
     display: 'flex', gap: 32, listStyle: 'none',
   },
@@ -86,15 +107,31 @@ const s = {
     fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase',
     color: 'var(--orange)', border: '0.5px solid var(--orange)',
     padding: '9px 22px', fontWeight: 500, cursor: 'pointer',
-    transition: 'background 0.2s, color 0.2s',
+    transition: 'background 0.2s, color 0.2s', textDecoration: 'none',
   },
-  mobileMenu: {
-    position: 'fixed', inset: 0, background: 'var(--green)',
-    zIndex: 99, display: 'flex', flexDirection: 'column',
-    justifyContent: 'center', alignItems: 'center', gap: 36,
+  hamburger: {
+    flexDirection: 'column', justifyContent: 'center', alignItems: 'center',
+    gap: 5, background: 'none', border: 'none', cursor: 'pointer', padding: 4,
   },
-  mobileLink: {
-    fontFamily: 'var(--serif)', fontSize: 30, fontWeight: 400,
-    color: 'var(--cream)', cursor: 'pointer',
+  bar: {
+    display: 'block', width: 22, height: 1.5,
+    background: 'var(--cream)', transition: 'transform 0.25s, opacity 0.25s',
+  },
+  dropdown: {
+    position: 'fixed', top: 57, left: 0, right: 0, zIndex: 99,
+    background: 'rgba(28,58,40,0.98)',
+    backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
+    display: 'flex', flexDirection: 'column', alignItems: 'flex-start',
+    padding: '0 32px',
+    overflow: 'hidden',
+    transition: 'max-height 0.35s ease, opacity 0.25s ease',
+    borderBottom: '0.5px solid rgba(247,244,239,0.12)',
+  },
+  dropdownLink: {
+    fontSize: 13, letterSpacing: '0.1em', textTransform: 'uppercase',
+    color: 'rgba(247,244,239,0.75)', cursor: 'pointer', fontWeight: 400,
+    padding: '16px 0',
+    borderBottom: '0.5px solid rgba(247,244,239,0.08)',
+    width: '100%', textDecoration: 'none',
   },
 }

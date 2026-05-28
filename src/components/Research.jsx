@@ -1,4 +1,14 @@
+import { useState } from 'react'
+
 const POSTS = [
+  {
+    tag: 'Press Release',
+    title: "Princeton Biopartners' Evexa Named Among Top Evidence Generation Software Platforms of 2026 by Life Sciences Review",
+    date: 'May 14, 2026',
+    read: 'PRNewswire',
+    url: 'https://www.prnewswire.com/news-releases/princeton-biopartners-evexa-named-among-top-evidence-generation-software-platforms-of-2026-by-life-sciences-review-302771824.html',
+    bg: '#1a2e20',
+  },
   {
     tag: 'Direct-to-Patient',
     title: 'Direct-to-Patient Pharma Models: A Strategic and Regulatory Appraisal of Risks, Opportunities, and the Critical Role of Medical Affairs',
@@ -30,7 +40,7 @@ export default function Research() {
     <section id="research" style={s.section}>
       <div style={s.header}>
         <div>
-          <p style={s.eyebrow}>ThesisRx</p>
+          <p style={s.eyebrow}>Research</p>
           <h2 style={s.title}>Research & Analysis</h2>
           <p style={s.subtitle}>
             Critical analysis and thought leadership on the forces shaping the future of healthcare.
@@ -40,8 +50,10 @@ export default function Research() {
           All Posts ↗
         </a>
       </div>
-      <div style={s.grid}>
-        {POSTS.map(post => <PostCard key={post.url} post={post} />)}
+      <div style={s.body}>
+        <div style={s.grid}>
+          {POSTS.map(post => <PostCard key={post.url} post={post} />)}
+        </div>
       </div>
     </section>
   )
@@ -70,25 +82,23 @@ function PostCard({ post }) {
   )
 }
 
-import { useState } from 'react'
-
 const s = {
   section: {
     background: 'var(--cream)',
-    padding: '72px 56px',
     borderTop: '0.5px solid var(--border)',
   },
   header: {
-    display: 'flex', justifyContent: 'space-between',
-    alignItems: 'flex-end', marginBottom: 12,
+    padding: '52px 56px 32px',
+    borderBottom: '0.5px solid var(--border)',
+    display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end',
   },
   eyebrow: {
-    fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase',
+    fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase',
     color: 'var(--orange)', fontWeight: 500, marginBottom: 8,
   },
   title: {
-    fontFamily: 'var(--serif)', fontSize: 26, fontWeight: 400,
-    color: 'var(--green)', marginBottom: 10,
+    fontFamily: 'var(--serif)', fontSize: 'clamp(24px, 2.8vw, 34px)',
+    fontWeight: 400, color: 'var(--green)', lineHeight: 1.2, marginBottom: 10,
   },
   subtitle: {
     fontSize: 13, color: 'var(--muted)', fontWeight: 300, maxWidth: 460,
@@ -98,9 +108,12 @@ const s = {
     color: 'var(--orange)', textDecoration: 'underline',
     textUnderlineOffset: 4, flexShrink: 0, marginLeft: 24,
   },
+  body: {
+    padding: '40px 56px 52px',
+  },
   grid: {
     display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)',
-    gap: 20, marginTop: 36,
+    gap: 20,
   },
   card: {
     background: '#fff', border: '0.5px solid var(--border)',

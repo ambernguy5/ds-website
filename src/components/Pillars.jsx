@@ -20,25 +20,27 @@ export default function Pillars() {
   return (
     <section id="pillars" style={s.section}>
       <div style={s.header}>
-        <p style={s.eyebrow}>ThesisRx Investment Themes</p>
+        <p style={s.eyebrow}>Expertise</p>
         <h2 style={s.title}>
-          Three structural shifts<br />redefining healthcare.
+          Three structural shifts redefining healthcare.
         </h2>
       </div>
-      <div style={s.grid}>
-        {PILLARS.map((p, i) => (
-          <div
-            key={p.num}
-            style={{
-              ...s.pillar,
-              ...(i < PILLARS.length - 1 ? { borderRight: '0.5px solid rgba(247,244,239,0.08)' } : {})
-            }}
-          >
-            <span style={s.num}>{p.num}</span>
-            <h3 style={s.pillarTitle}>{p.title}</h3>
-            <p style={s.pillarBody}>{p.body}</p>
-          </div>
-        ))}
+      <div style={s.body}>
+        <div style={s.grid}>
+          {PILLARS.map((p, i) => (
+            <div
+              key={p.num}
+              style={{
+                ...s.pillar,
+                ...(i < PILLARS.length - 1 ? { borderRight: '0.5px solid var(--border)' } : {})
+              }}
+            >
+              <span style={s.num}>{p.num}</span>
+              <h3 style={s.pillarTitle}>{p.title}</h3>
+              <p style={s.pillarBody}>{p.body}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )
@@ -46,34 +48,38 @@ export default function Pillars() {
 
 const s = {
   section: {
-    background: 'var(--green)',
-    borderTop: '0.5px solid rgba(247,244,239,0.08)',
+    background: 'var(--cream)',
+    borderTop: '0.5px solid var(--border)',
   },
   header: {
-    padding: '56px 56px 32px',
-    borderBottom: '0.5px solid rgba(247,244,239,0.08)',
-    display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 32,
+    padding: '52px 56px 32px',
+    borderBottom: '0.5px solid var(--border)',
+    display: 'flex', flexDirection: 'column', alignItems: 'flex-start',
+    gap: 16,
   },
   eyebrow: {
-    fontSize: 10, letterSpacing: '0.16em', textTransform: 'uppercase',
-    color: 'var(--orange)', fontWeight: 500, flexShrink: 0,
+    fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase',
+    color: 'var(--orange)', fontWeight: 500, marginBottom: 0,
   },
   title: {
-    fontFamily: 'var(--serif)', fontSize: 'clamp(22px, 2.5vw, 30px)',
-    fontWeight: 400, color: 'var(--cream)', lineHeight: 1.25, textAlign: 'right',
+    fontFamily: 'var(--serif)', fontSize: 'clamp(24px, 2.8vw, 34px)',
+    fontWeight: 400, color: 'var(--green)', lineHeight: 1.2,
   },
-  grid: { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' },
-  pillar: { padding: '44px 40px 56px 56px' },
+  body: {
+    padding: '40px 56px 52px',
+  },
+  grid: { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0 },
+  pillar: { padding: '0 40px 0 0', marginRight: 40 },
   num: {
-    fontFamily: 'var(--serif)', fontSize: 32, fontWeight: 400,
-    color: 'var(--orange)', display: 'block', marginBottom: 18,
+    fontFamily: 'var(--serif)', fontSize: 28, fontWeight: 400,
+    color: 'var(--orange)', display: 'block', marginBottom: 16,
   },
   pillarTitle: {
-    fontSize: 14, fontWeight: 500, color: 'var(--cream)',
-    marginBottom: 14, letterSpacing: '0.02em', lineHeight: 1.4,
+    fontSize: 14, fontWeight: 500, color: 'var(--green)',
+    marginBottom: 12, letterSpacing: '0.02em', lineHeight: 1.4,
   },
   pillarBody: {
-    fontSize: 13, color: 'rgba(247,244,239,0.42)',
+    fontSize: 13, color: 'var(--body)',
     lineHeight: 1.75, fontWeight: 300,
   },
 }
